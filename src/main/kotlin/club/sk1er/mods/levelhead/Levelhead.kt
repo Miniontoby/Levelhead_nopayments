@@ -129,10 +129,10 @@ object Levelhead {
             purchaseStatus = jsonParser.parse(getWithAgent(
                 "https://api.sk1er.club/levelhead_purchase_status/" + UMinecraft.getMinecraft().session.profile.id.toString()
             )).asJsonObject
-            LevelheadPurchaseStates.chat = purchaseStatus["chat"].asBoolean
-            LevelheadPurchaseStates.tab = purchaseStatus["tab"].asBoolean
-            LevelheadPurchaseStates.aboveHead = purchaseStatus["head"].asInt
-            LevelheadPurchaseStates.customLevelhead = purchaseStatus["custom_levelhead"].asBoolean
+            LevelheadPurchaseStates.chat = true // purchaseStatus["chat"].asBoolean
+            LevelheadPurchaseStates.tab = true // purchaseStatus["tab"].asBoolean
+            LevelheadPurchaseStates.aboveHead = 3 // purchaseStatus["head"].asInt
+            LevelheadPurchaseStates.customLevelhead = true // purchaseStatus["custom_levelhead"].asBoolean
             for (i in displayManager.aboveHead.size..LevelheadPurchaseStates.aboveHead) {
                 displayManager.aboveHead.add(AboveHeadDisplay(DisplayConfig()))
             }
@@ -263,9 +263,9 @@ object Levelhead {
     class LevelheadRequest(val uuid: String, val display: LevelheadDisplay, val allowOverride: Boolean, val type: String = display.config.type)
 
     object LevelheadPurchaseStates {
-        var chat: Boolean = false
-        var tab: Boolean = false
+        var chat: Boolean = true
+        var tab: Boolean = true
         var aboveHead: Int = 1
-        var customLevelhead: Boolean = false
+        var customLevelhead: Boolean = true
     }
 }
